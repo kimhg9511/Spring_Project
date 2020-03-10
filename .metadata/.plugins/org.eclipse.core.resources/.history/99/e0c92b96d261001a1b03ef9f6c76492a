@@ -1,0 +1,45 @@
+package chap07;
+
+class Himart {
+	int price;
+	int bonusPoint;
+}
+
+class Tv extends Himart {
+
+}
+
+class Audio extends Himart {
+
+}
+
+class Computer extends Himart {
+
+}
+
+class Buyer {
+	int money = 1000;
+	int bonusPoint = 0;
+
+	void buy(Tv tv) {
+		money -= tv.price;
+		bonusPoint += tv.bonusPoint;
+	}
+	void buy(Computer computer) {
+		money -= computer.price;
+		bonusPoint += computer.bonusPoint;
+	}
+	void buy(Audio audio) {
+		money -= audio.price;
+		bonusPoint += audio.bonusPoint;
+	}
+}
+
+public class HimartTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

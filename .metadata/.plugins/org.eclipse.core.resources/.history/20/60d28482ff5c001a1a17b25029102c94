@@ -1,0 +1,14 @@
+package chap06_1;
+
+public class PrivateData{
+	private int privateVar = 10;
+}
+class DefaultData{
+	int defaultVar = 20;
+}
+class ProtectedData{
+	protected int protectedVar = 50;
+}
+class PublicData{
+	public int publicVar = 50;
+}

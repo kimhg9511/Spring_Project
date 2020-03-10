@@ -1,0 +1,5 @@
+package chap06_1;
+
+class DefaultData{
+	int defaultVar = 20;
+}

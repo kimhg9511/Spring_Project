@@ -1,0 +1,22 @@
+package chap06;
+
+import chap06_1.*;
+
+public class AccessControllTest {
+/**
+ * 접근 제한자 테스트
+ * @param args
+ */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		PrivateData pd = new PrivateData();
+		System.out.println(pd.privateVar);
+		DefaultData df = new DefaultData();
+		System.out.println(df.defaultVar);
+		ProtectedDAta pt = new ProtectedData();
+		System.out.println(pt.protectedVar);
+		PublicData pb = new PublicData();
+		System.out.println(pb.publicVar);
+	}
+
+}

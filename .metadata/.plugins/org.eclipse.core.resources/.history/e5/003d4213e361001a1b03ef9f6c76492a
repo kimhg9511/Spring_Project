@@ -1,0 +1,12 @@
+package lol;
+
+public interface DamageType {
+
+}
+
+interface AD extends DamageType {
+	int ad=0;
+}
+interface AP extends DamageType { 
+	int ap=0;
+}

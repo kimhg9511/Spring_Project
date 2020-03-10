@@ -1,0 +1,58 @@
+package chap07;
+
+class Card {
+	static final int KIND_MAX = 4;
+	static final int NUM_MAX = 13;
+
+	static final int SPADE = 4;
+	static final int DIAMOND = 3;
+	static final int HEART = 2;
+	static final int CLOVER = 1;
+
+	int kind;
+	int number;
+
+	public Card() {
+		this(SPADE, 1);
+	}
+
+	public Card(int kind, int number) {
+		super();
+		this.kind = kind;
+		this.number = number;
+	}
+
+	@Override
+	public String toString() {
+		String[] kinds = {"CLOVER", "HEART", "DIAMOND", "SPADE"};
+		String numbers = "123456789XJQK";
+		String s = "kind : " + kinds[this.kind-1];
+		s = s + ", number : " + numbers.charAt(this.number-1);
+		return s;
+	}
+}
+
+class Deck extends Card {
+	final int CARD_NUM = 52;
+	Card[] cardArr = new Card[CARD_NUM];
+	
+	public Deck() {
+		int i = 0;
+		for(int k=1;k<=Card.KIND_MAX;k++) {
+			for(int n=1;n<=Card.NUM_MAX;n++) {
+				cardArr[i++] = new Card(k,n);
+			}
+			
+		}
+	}
+}
+
+public class DeckTest {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Card c = new Card();
+		System.out.println(c.toString());
+	}
+
+}

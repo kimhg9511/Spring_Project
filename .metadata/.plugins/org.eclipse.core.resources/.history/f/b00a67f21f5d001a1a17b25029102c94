@@ -1,0 +1,31 @@
+package chap06;
+
+class PersonInfo {
+	void showSleepingType(Person person) {
+		person.showSleepStyle();
+	}
+}
+
+public class ParamPolyTest {
+	/**
+	 * Parameter 다형성 테스트
+	 * 
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		PersonInfo pf = new PersonInfo();
+		Person person = new Person();
+		Employee employee = new Employee();
+		Student student = new Student();
+		President president = new President();
+
+		pf.showSleepingType(person);
+		pf.showSleepingType(employee);
+		pf.showSleepingType(student);
+		pf.showSleepingType(president);
+		// Array
+		Person[] pArray = new Person[3];
+
+	}
+
+}

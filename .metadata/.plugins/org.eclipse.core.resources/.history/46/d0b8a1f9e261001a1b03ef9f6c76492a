@@ -1,0 +1,10 @@
+package lol;
+
+public class Champion {
+	String champName;
+	double hp;
+	double def;
+	double reg;
+	int range;
+	int speed;
+}

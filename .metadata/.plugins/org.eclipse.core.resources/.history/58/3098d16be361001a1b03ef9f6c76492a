@@ -1,0 +1,12 @@
+package lol;
+
+public class Champion implements Role,Lane{
+	String champName;
+	double ad;
+	double ap;
+	double hp;
+	double def;
+	double reg;
+	int range;
+	int speed;
+}

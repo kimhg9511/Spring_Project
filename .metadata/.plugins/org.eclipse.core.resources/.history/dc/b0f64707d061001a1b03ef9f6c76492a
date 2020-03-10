@@ -1,0 +1,27 @@
+package chap07;
+
+final class SingletonTest {
+	private static SingletonTest s = new SingletonTest();
+	
+	private SingletonTest() {
+		
+	}
+	
+	public static SingletonTest getInstance() {
+		if(s == null) {
+			s = new SingletonTest();
+		}
+		
+		return s;
+	}
+	
+	public void getName() {
+		System.out.println("My name is Singleton");
+	}
+}
+
+public class SingletonTest{
+		public static void main(String[] args) {
+			
+		}
+}

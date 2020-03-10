@@ -1,0 +1,5 @@
+package chap06_1;
+
+class ProtectedData{
+	protected int protectedVar = 50;
+}
