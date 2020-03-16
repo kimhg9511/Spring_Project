@@ -3,6 +3,7 @@ package com.kimhg.swp.persistence;
 import java.util.List;
 
 import com.kimhg.swp.domain.BoardVO;
+import com.kimhg.swp.domain.Criteria;;
 
 public interface BoardDAO {
 	
@@ -17,4 +18,8 @@ public interface BoardDAO {
 	public List<BoardVO> listAll() throws Exception;
 	
 	public Integer getMaxBno() throws Exception;
+	
+	List<BoardVO> listPage(Criteria cri) throws Exception;
+	
+	int getTotalCount(Criteria cri) throws Exception;
 }

@@ -36,9 +36,10 @@
 
 <div>
 	<!-- 목록 버튼 -->
-	<a href="/board/listAll" class="btn btn-primary">LIST ALL</a>
+	<a href="/board/listPage${cri.makeQuery()}" class="btn btn-primary">List Page</a>
 	<!-- 수정 버튼 -->
-	<a href="/board/update?bno=${boardVO.bno}" class="btn btn-warning">update</a>
+	<a href="/board/update${cri.makeQuery()}&bno=${boardVO.bno}"
+		class="btn btn-warning">update</a>
 	<!-- 삭제 버튼 -->
 	<button id="btn-remove" class="btn btn-danger">delete</button>
 </div>
@@ -48,10 +49,10 @@
 	$(function() {
 		$('#btn-remove').click(function() {
 			if (confirm("are you sure?")) {
-				self.location.href = "/board/remove?bno=${boardVO.bno}";
+				self.location.href = "/board/remove${cri.makeQuery()}&bno=${boardVO.bno}";
 			}
 		});
-		
+
 		//수정 성공시 문구 나타났다 사라짐
 		if (result === 'saveOK') {
 			$('#saveOK').removeClass('hidden');

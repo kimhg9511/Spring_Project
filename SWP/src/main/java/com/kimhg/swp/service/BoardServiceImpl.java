@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.kimhg.swp.domain.BoardVO;
+import com.kimhg.swp.domain.Criteria;
 import com.kimhg.swp.persistence.BoardDAO;
 
 //서비스 객체임을 알림
@@ -56,6 +57,16 @@ public class BoardServiceImpl implements BoardService{
 			board.setWriter("kimhg");
 			regist(board);
 		}
+	}
+
+	@Override
+	public List<BoardVO> listPage(Criteria cri) throws Exception {
+		return boardDAO.listPage(cri);
+	}
+
+	@Override
+	public int getTotalCount(Criteria cri) throws Exception {
+		return boardDAO.getTotalCount(cri);
 	}
 
 }

@@ -16,6 +16,7 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">HOME PAGE</h3>
 					</div>
+					<a href="/board/listPage" class="btn btn-primary">List Page</a>
 				</div>
 			</div>
 		</div>

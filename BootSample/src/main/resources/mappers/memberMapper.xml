@@ -17,6 +17,7 @@
 <!-- 데이터 조회 -->
 <select id = "selectMember" resultType="com.example.sbadmin.domain.MemberVO">
 	SELECT * from Member
-	<!-- WHERE userid = #{userid} -->
+	WHERE userid = #{userid}
 </select>
+
 </mapper>
