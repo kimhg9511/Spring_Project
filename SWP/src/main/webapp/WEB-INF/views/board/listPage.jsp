@@ -13,6 +13,21 @@
 
 
 <div class="row">
+	<!-- 검색 select 박스 -->
+	<div class="col-md-11">
+		<div class="form-inline">
+			<select id="searchTypeSel" name="searchType">
+				<option value="">검색조건</option>
+				<option value="t">제목</option>
+				<option value="c">내용</option>
+				<option value="w">작성자</option>
+				<option value="tc">제목+내용</option>
+				<option value="all">전체조건</option>
+			</select> <input class="form-control" type="text" id="keyword" name="keyword"
+				value="${pageMaker.cri.keyword}" placeholder="검색어를 입력하세요" />
+			<button id="searchBtn" class="btn btn-primary">Search</button>
+		</div>
+	</div>
 	<div class="col-md-11"></div>
 	<div class="col-md-1 text-right">
 		<!-- perPageNum의 값을 정하는 select 박스 -->
@@ -46,13 +61,18 @@
 		</tr>
 	</c:forEach>
 </table>
-
+<div>
+	<a href="/board/register${pageMaker.makeQuery(pageMaker.cri.page)}"><button class="btn btn-primary">새글등록</button></a>
+	<!-- 처음 목록 버튼 추가 -->
+	<a href="/board/listPage" class="btn btn-warning">처음목록</a>
+	<a href="/board/dummy"><button class="btn btn-danger">dummy생성</button></a>
+</div><%-- 
 <!-- 등록, dummy 버튼 -->
 <div>
 	<a href="/board/register${pageMaker.makeQuery(pageMaker.cri.page)}"><button
 			class="btn btn-primary">새글등록</button></a> <a href="/board/dummy"><button
 			class="btn btn-danger">dummy생성</button></a>
-</div>
+</div> --%>
 
 <!-- 페이지 번호 -->
 <div class="text-center">
@@ -85,52 +105,79 @@
 </div>
 
 <script>
-	$(function() {
+	$(function(){
 		//perPageNum select 박스 설정
 		setPerPageNumSelect();
-
+		//searchType select 박스 설정
+		setSearchTypeSelect();
+		
 		//등록, 삭제 후 문구 처리
 		var result = '${result}';
-		$(function() {
-			if (result === 'registerOK') {
+		$(function(){
+			if(result === 'registerOK'){
 				$('#registerOK').removeClass('hidden');
 				$('#registerOK').fadeOut(2000);
 			}
-			if (result === 'removeOK') {
+			if(result === 'removeOK'){
 				$('#removeOK').removeClass('hidden');
 				$('#removeOK').fadeOut(2000);
 			}
 		})
-
+		
 		//prev 버튼 활성화, 비활성화 처리
 		var canPrev = '${pageMaker.prev}';
-		if (canPrev !== 'true') {
+		if(canPrev !== 'true'){
 			$('#page-prev').addClass('disabled');
 		}
-
+		
 		//next 버튼 활성화, 비활성화 처리
 		var canNext = '${pageMaker.next}';
-		if (canNext !== 'true') {
+		if(canNext !== 'true'){
 			$('#page-next').addClass('disabled');
 		}
-
+		
 		//현재 페이지 파란색으로 활성화
 		var thisPage = '${pageMaker.cri.page}';
 		//매번 refresh 되므로 다른 페이지 removeClass 할 필요는 없음->Ajax 이용시엔 해야함
-		$('#page' + thisPage).addClass('active');
+		$('#page'+thisPage).addClass('active');
 	})
-
-	function setPerPageNumSelect() {
-		var perPageNum = "${pageMaker.cri.perPageNum}";
+	
+	function setPerPageNumSelect(){
+		var perPageNum = '${pageMaker.cri.perPageNum}';
 		var $perPageSel = $('#perPageSel');
 		var thisPage = '${pageMaker.cri.page}';
-		$perPageSel.val(perPageNum).prop("selected", true);
-		//PerPageNum가 바뀌면 링크 이동
-		$perPageSel.on('change', function() {
-			//pageMarker.makeQuery 사용 못하는 이유: makeQuery는 page만을 매개변수로 받기에 변경된 perPageNum을 반영못함
-			window.location.href = "listPage?page=" + thisPage + "&perPageNum="
-					+ $perPageSel.val();
+		
+		$perPageSel.val(perPageNum).prop("selected",true);
+		$perPageSel.on('change',function(){
+			window.location.href = "listPage?page="+thisPage+"&perPageNum="+$perPageSel.val();
 		})
 	}
-</script>
+	function setSearchTypeSelect(){
+		var $searchTypeSel = $('#searchTypeSel');
+		var $keyword = $('#keyword');
+		
+		$searchTypeSel.val('${pageMaker.cri.searchType}').prop("selected",true);
+		//검색 버튼이 눌리면
+		$('#searchBtn').on('click',function(){
+			var searchTypeVal = $searchTypeSel.val();
+			var keywordVal = $keyword.val();
+			//검색 조건 입력 안했으면 경고창 
+			if(!searchTypeVal){
+				alert("검색 조건을 선택하세요!");
+				$searchTypeSel.focus();
+				return;
+			//검색어 입력 안했으면 검색창
+			}else if(!keywordVal){
+				alert("검색어를 입력하세요!");
+				$('#keyword').focus();
+				return;
+			}
+			var url = "listPage?page=1"
+				+ "&perPageNum=" + "${pageMaker.cri.perPageNum}"
+				+ "&searchType=" + searchTypeVal
+				+ "&keyword=" + encodeURIComponent(keywordVal);
+			window.location.href = url;
+		})
+	}
+</script>b
 <%@include file="../include/footer.jsp"%>

@@ -82,6 +82,9 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "saveOK");
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		//searchType,keyword 추가
+		rttr.addAttribute("searchType",cri.getSearchType());
+		rttr.addAttribute("keyword",cri.getKeyword());
 		rttr.addAttribute("bno", board.getBno());
 
 		return "redirect:/board/read";
@@ -104,6 +107,9 @@ public class BoardController {
 		rttr.addFlashAttribute("result", "removeOK");
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		//searchType,keyword 추가
+		rttr.addAttribute("searchType", cri.getSearchType());
+		rttr.addAttribute("keyword", cri.getKeyword());
 		return "redirect:/board/listPage";
 	}
 
@@ -130,11 +136,13 @@ public class BoardController {
 	 * 더미 데이터 생성
 	 */
 	@RequestMapping(value = "/dummy")
-	public String dummyPOST(RedirectAttributes rttr) throws Exception {
+	public String dummyPOST(Criteria cri, RedirectAttributes rttr) throws Exception {
 		logger.info("dummy post.....");
+		
 		service.dummy();
-
 		rttr.addFlashAttribute("result", "registerOK");
-		return "redirect:/board/listAll";
+		rttr.addAttribute("page", cri.getPage());
+		rttr.addAttribute("perPageNum", cri.getPerPageNum());
+		return "redirect:/board/listPage";
 	}
 }

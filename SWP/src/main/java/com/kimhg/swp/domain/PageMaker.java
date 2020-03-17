@@ -10,11 +10,19 @@ public class PageMaker {
 	private int endPage;
 	private boolean prev;
 	private boolean next;
-	private Criteria cri;
+	private Criteria cri; // has - a 관계
 
-	//생성자
+	/**
+	 * Criteria를 상속받지 않고 가져다 선언하여 쓰는 이유..? 상속을 받는 대상일지 고민하는 것은 고민하는 대상과 현재 클래스의 관계가
+	 * has - a 관계인지 is - a 관계인지에 대하여 확인해 볼 필요가 있다. has - a 관계이면 가져다 사용하기만 하고(주로
+	 * 일부분만을 이용) is - a 관계이면 상속하여 사용한다.(주로 다형성을 이용하여 데이터를 처리하는 데에 이용)
+	 * 
+	 * @param cri
+	 */
+
+	// 생성자
 	public PageMaker(Criteria cri) {
-		//super();
+		// super();
 		this.cri = cri;
 	}
 
@@ -29,7 +37,7 @@ public class PageMaker {
 		int perPageNum = this.cri.getPerPageNum();
 //		int page = getPage();
 //		int perPageNum = getPerPageNum();
-		
+
 		this.endPage = (int) (Math.ceil(page / (double) displayPageCnt) * displayPageCnt);
 		this.startPage = (this.endPage - displayPageCnt) + 1;
 		// 실제로 사용되는 페이지의 수
@@ -41,17 +49,21 @@ public class PageMaker {
 		this.prev = (startPage != 1);
 		this.next = (endPage * perPageNum < totalDataCount);
 	}
-	
+
 	public String makeQuery(int page) {
-		UriComponents uriComponents = UriComponentsBuilder.newInstance()
+		UriComponentsBuilder uriComponentsBuilder = UriComponentsBuilder.newInstance()
 				.queryParam("page", page)
-				.queryParam("perPageNum", this.cri.getPerPageNum())
-				//.queryParam("perPageNum", getPerPageNum())
-				.build()
-				.encode();
-		
-		return uriComponents.toString();
+				.queryParam("perPageNum", this.cri.getPerPageNum());
+
+		if (this.cri.getSearchType() != null) {
+			uriComponentsBuilder
+			.queryParam("searchType", this.cri.getSearchType())
+			.queryParam("keyword", this.cri.getKeyword());
+		}
+
+		return uriComponentsBuilder.build().encode().toString();
 	}
+
 	public int getDisplayPageCnt() {
 		return displayPageCnt;
 	}
