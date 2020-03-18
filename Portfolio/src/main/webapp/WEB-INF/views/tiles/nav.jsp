@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
 <ul
 	class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
 	id="accordionSidebar">
@@ -91,7 +87,7 @@
 		</div></li> -->
 
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="profile"> <i
+	<li class="nav-item"><a class="nav-link" href="private/profile"> <i
 			class="fas fa-user fa-sm fa-fw mr-2"></i> <span>Profile</span>
 	</a></li>
 

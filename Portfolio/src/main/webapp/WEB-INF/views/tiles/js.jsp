@@ -1,7 +1,3 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
-
 <!-- Bootstrap core JavaScript-->
 <script src="resources/bootstrap/vendor/jquery/jquery.min.js"></script>
 <script

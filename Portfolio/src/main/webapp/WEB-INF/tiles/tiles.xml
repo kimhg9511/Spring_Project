@@ -13,14 +13,8 @@
         <put-attribute name="nav"   value="/WEB-INF/views/tiles/nav.jsp" />
         <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
         <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
-        <put-attribute name="content" value= "" />
+       <!--   <put-attribute name="content" value= "" />-->
     </definition>
-    
-    <!-- base를 상속받은 base/index -->
-    <definition name="base/index" extends="base">
-        <put-attribute name="content" value="/WEB-INF/views/home.jsp" />
-    </definition>
-    
     <!-- 동적 매핑.
          만약 /user/login의 경로라면 /WEB-INF/views/user/login.jsp 뷰를 가져온다. -->
     <definition name="*.tiles" extends="base">
