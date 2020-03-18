@@ -8,11 +8,12 @@
  
     <!-- 화면의 기초가 되는 base -->
     <definition name="base" template="/WEB-INF/views/tiles/template.jsp">
-        <put-attribute name="css"   value="/WEB-INF/views/tiles/css.jsp" />
-        <put-attribute name="js"   value="/WEB-INF/views/tiles/js.jsp" />
-        <put-attribute name="nav"   value="/WEB-INF/views/tiles/nav.jsp" />
-        <put-attribute name="header" value="/WEB-INF/views/tiles/header.jsp" />
-        <put-attribute name="footer" value="/WEB-INF/views/tiles/footer.jsp" />
+        <put-attribute name="css"   		value="/WEB-INF/views/tiles/css.jsp" />
+        <put-attribute name="js"   			value="/WEB-INF/views/tiles/js.jsp" />
+        <put-attribute name="nav"   		value="/WEB-INF/views/tiles/nav.jsp" />
+        <put-attribute name="header" 		value="/WEB-INF/views/tiles/header.jsp" />
+        <put-attribute name="footer" 		value="/WEB-INF/views/tiles/footer.jsp" />
+        <put-attribute name="content"		value=""/>
        <!--   <put-attribute name="content" value= "" />-->
     </definition>
     <!-- 동적 매핑.

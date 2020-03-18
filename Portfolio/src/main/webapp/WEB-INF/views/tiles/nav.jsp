@@ -5,7 +5,7 @@
 	<!-- Sidebar - Brand -->
 	<a
 		class="sidebar-brand d-flex align-items-center justify-content-center"
-		href="#">
+		href="/portfolio">
 		<div class="sidebar-brand-icon rotate-n-15">
 			<i class="fas fa-laugh-wink"></i>
 		</div>
@@ -18,7 +18,7 @@
 	<hr class="sidebar-divider my-0">
 
 	<!-- Nav Item - Dashboard -->
-	<li class="nav-item active"><a class="nav-link" href="#"> <i
+	<li class="nav-item active"><a class="nav-link" href="/portfolio"> <i
 			class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
 	</a></li>
 
@@ -87,7 +87,7 @@
 		</div></li> -->
 
 	<!-- Nav Item - Charts -->
-	<li class="nav-item"><a class="nav-link" href="private/profile"> <i
+	<li class="nav-item"><a class="nav-link" href="profile"> <i
 			class="fas fa-user fa-sm fa-fw mr-2"></i> <span>Profile</span>
 	</a></li>
 
