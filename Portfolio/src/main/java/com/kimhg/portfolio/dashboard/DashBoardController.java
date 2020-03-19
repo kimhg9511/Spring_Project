@@ -1,5 +1,6 @@
 package com.kimhg.portfolio.dashboard;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -13,7 +14,7 @@ public class DashBoardController {
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
 	public ModelAndView DashBoardView(ModelAndView mv) {
-		mv.setViewName("dashboard/dashboard.tiles");
+		mv.setViewName("dashboard.tiles");
 		logger.info("DashBoard Home!");
 		return mv;
 	}
