@@ -18,7 +18,6 @@
 		mybatis-spring
 		spring-jdbc	
 	-->
-
 	<!-- Connect DB using Mysql-connector-java -->
 	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
@@ -35,18 +34,20 @@
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="configLocation"
 			value="classpath:/mybatis-config.xml" />
-	</beans:bean>
-<!--
-		<beans:property name="mapperLocations"
+			<beans:property name="mapperLocations"
 			value="classpath:mappers/**/*Mapper.xml" />
-	sqlSessionTemplate
-	<bean id="sqlSession"
+	</beans:bean>
+		
+	<!-- sqlSessionTemplate implements MyBatis.SqlSession 
+	Manage transaction, thread handling, connect/disconnect DB
+	-->
+	<beans:bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory"
-			ref="sqlSessionFactory"></constructor-arg>
-	</bean>
--->
+		<beans:constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory"></beans:constructor-arg>
+	</beans:bean>
+
 	<!-- com.kimhg.swp.persistence 패키지를 자동으로 인식 -->
 	<context:component-scan
 		base-package="com.kimhg.portfolio.persistence">
