@@ -89,13 +89,13 @@
 	</div>
 	</li> 
 	-->
-	<!-- Nav Item - Charts -->
+	<!-- Profile -->
 	<li class="nav-item">
 	<a class="nav-link" href="${pageContext.request.contextPath}/privates/profile"> 
 	<i class="fas fa-user fa-sm fa-fw mr-2"></i> 
 	<span>Profile</span>
 	</a>
-	
+	<!-- Wallet -->
 	<a class="nav-link" href="${pageContext.request.contextPath}/privates/wallet">
 	<i class="fas fa-dollar-sign fa-sm fa-fw mr-2"></i>
 	<span>Wallet</span>
