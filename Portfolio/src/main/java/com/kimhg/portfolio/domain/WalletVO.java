@@ -3,69 +3,59 @@ package com.kimhg.portfolio.domain;
 import java.util.Date;
 
 public class WalletVO {
-	private Integer trNo;
-	private String trname;
-	private double buy;
-	private double sell;
-	private double benefit;
+	private Integer trno;
+	private String name;
+	private Double buy;
+	private Double sell;
+	private Double benefit;
 	private Date trdate;
-
-	public Integer getTrNo() {
-		return trNo;
+	private Double totalmoney;
+	
+	public Integer getTrno() {
+		return trno;
 	}
-
-	public void setTrNo(Integer trNo) {
-		this.trNo = trNo;
+	public void setTrno(Integer trno) {
+		this.trno = trno;
 	}
-
-	public String getTrname() {
-		return trname;
+	public String getName() {
+		return name;
 	}
-
-	public void setTrname(String trname) {
-		this.trname = trname;
+	public void setName(String name) {
+		this.name = name;
 	}
-
-	public double getBuy() {
+	public Double getBuy() {
 		return buy;
 	}
-
-	public void setBuy(double buy) {
+	public void setBuy(Double buy) {
 		this.buy = buy;
 	}
-
-	public double getSell() {
+	public Double getSell() {
 		return sell;
 	}
-
-	public void setSell(double sell) {
+	public void setSell(Double sell) {
 		this.sell = sell;
 	}
-
-	public double getBenefit() {
+	public Double getBenefit() {
 		return benefit;
 	}
-
-	public void setBenefit(double benefit) {
+	public void setBenefit(Double benefit) {
 		this.benefit = benefit;
 	}
-
 	public Date getTrdate() {
 		return trdate;
 	}
-
 	public void setTrdate(Date trdate) {
 		this.trdate = trdate;
 	}
-
-	public double getTotalmoney() {
+	public Double getTotalmoney() {
 		return totalmoney;
 	}
-
-	public void setTotalmoney(double totalmoney) {
+	public void setTotalmoney(Double totalmoney) {
 		this.totalmoney = totalmoney;
 	}
-
-	private double totalmoney;
-
+	@Override
+	public String toString() {
+		return "WalletVO [trno=" + trno + ", name=" + name + ", buy=" + buy + ", sell=" + sell + ", benefit=" + benefit
+				+ ", trdate=" + trdate + ", totalmoney=" + totalmoney + "]";
+	}	
 }

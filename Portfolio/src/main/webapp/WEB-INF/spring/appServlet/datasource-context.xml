@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans:beans
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
@@ -10,16 +11,12 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-	
-	<!-- DB Connection Setting 
-	Requirements
-		mysql-connector-java
-		mybatis
-		mybatis-spring
-		spring-jdbc	
-	-->
+
+	<!-- DB Connection Setting Requirements mysql-connector-java mybatis mybatis-spring 
+		spring-jdbc -->
 	<!-- Connect DB using Mysql-connector-java -->
-	<beans:bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+	<beans:bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver" />
 		<beans:property name="url"
@@ -27,20 +24,19 @@
 		<beans:property name="username" value="root" />
 		<beans:property name="password" value="1234" />
 	</beans:bean>
- 
+
 	<!-- sqlSessionFactory : Conntect Mysql and MyBatis -->
 	<beans:bean id="sqlSessionFactory"
 		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource" />
 		<beans:property name="configLocation"
 			value="classpath:/mybatis-config.xml" />
-			<beans:property name="mapperLocations"
+		<beans:property name="mapperLocations"
 			value="classpath:mappers/**/*Mapper.xml" />
 	</beans:bean>
-		
-	<!-- sqlSessionTemplate implements MyBatis.SqlSession 
-	Manage transaction, thread handling, connect/disconnect DB
-	-->
+
+	<!-- sqlSessionTemplate implements MyBatis.SqlSession Manage transaction, 
+		thread handling, connect/disconnect DB -->
 	<beans:bean id="sqlSession"
 		class="org.mybatis.spring.SqlSessionTemplate"
 		destroy-method="clearCache">
@@ -48,12 +44,9 @@
 			ref="sqlSessionFactory"></beans:constructor-arg>
 	</beans:bean>
 
+
 	<!-- com.kimhg.swp.persistence 패키지를 자동으로 인식 -->
 	<context:component-scan
-		base-package="com.kimhg.portfolio.persistence">
-	</context:component-scan>
-	<!-- com.kimhg.swp.service 패키지를 자동으로 인식 -->
-	<context:component-scan
-		base-package="com.kimhg.portfolio.service">
+		base-package="com.kimhg">
 	</context:component-scan>
 </beans:beans>
