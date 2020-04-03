@@ -31,6 +31,7 @@ public class PrivatesController {
 		mv.setViewName("privates/profile.tiles"); // set url(ModelAndView)
 		return mv;
 	}
+	
 	@RequestMapping(value="/wallet*", method = RequestMethod.GET) // lower url
 	public ModelAndView WalletView(Criteria cri,ModelAndView mv) throws Exception{
 		logger.info("Wallet Call..."); // get info log

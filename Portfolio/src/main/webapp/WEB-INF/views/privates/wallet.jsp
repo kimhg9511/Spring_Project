@@ -15,13 +15,13 @@
 			<h6 class="m-0 font-weight-bold text-primary">거래내역</h6>
 		</div>
 		<div class="card-body">
+			<!-- perPageNum의 값을 정하는 select 박스 -->
 			<select class="form-control" id="perPageSel">
 				<option value="10">10</option>
 				<option value="15">15</option>
 				<option value="20">20</option>
 			</select>
 			<div class="table-responsive">
-				<!-- perPageNum의 값을 정하는 select 박스 -->
 
 				<!-- 데이터 출력 -->
 				<table class="table table-bordered" id="dataTable" width="100%"
@@ -85,7 +85,6 @@
 								<span>${idx}<span class="sr-only">(current)</span></span>
 						</a></li>
 					</c:forEach>
-
 					<!-- next 버튼 -->
 					<li id="page-next"><a
 						href="wallet${pageMaker.makeQuery(pageMaker.endPage)}"
@@ -96,8 +95,8 @@
 			</nav>
 		</div>
 	</div>
-
 </div>
-
 <!-- /.container-fluid -->
+
+
 
