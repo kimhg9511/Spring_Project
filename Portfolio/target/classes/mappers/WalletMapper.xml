@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- DTD 선언 -->
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WalletMapper">
+	<sql id="searchCondition">
+		<if test="searchType != null">
+			<if test="searchType == 't'.toString()">
+				and title like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'c'.toString()">
+				and content like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'w'.toString()">
+				and writer like CONCAT('%', #{keyword}, '%')
+			</if>
+			<if test="searchType == 'tc'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%')
+				or content
+				like
+				CONCAT('%', #{keyword}, '%'))
+			</if>
+			<if test="searchType == 'all'.toString()">
+				and (title like CONCAT('%', #{keyword}, '%')
+				or content
+				like
+				CONCAT('%', #{keyword}, '%')
+				or writer like CONCAT('%',
+				#{keyword},
+				'%'))
+			</if>
+		</if>
+	</sql>
+	<!-- 행 검색 -->
+	<select id="read" resultType="com.kimhg.portfolio.domain.WalletVO">
+		select *
+		from wallet
+		where trno =
+		#{trno}
+	</select>
+	<!-- wallet 전체 행 조회 -->
+	<select id="listAll" resultType="com.kimhg.portfolio.domain.WalletVO">
+		select *
+		from wallet
+		order by trno desc, trdate desc
+	</select>
+	<!-- trno 최대 구하기 -->
+	<select id="getMaxBno" resultType="Integer">
+		select max(trno) from wallet
+	</select>
+	<!-- 게시글의 전체 개수를 가져옴 -->
+	<select id="gettotalcount" resultType="int">
+		select count(trno)
+		from wallet
+		where trno > 0
+		<include refid="searchCondition"></include>
+	</select>
+	<!-- 일정 페이지씩 조회 -->
+	<select id="listPage" resultType="WalletVO">
+		select *
+		from wallet
+		where trno > 0
+		order by trno desc, trdate desc
+		limit #{pageStart}, #{perPageNum}
+	</select>
+</mapper>
